@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h1>Product Manager</h1>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Назва</th>
+                <th>Ціна</th>
+                <th>Категорія</th>
+                <th>Дія</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+            <tr>
+                <td>{{ product.name }}</td>
+                <td>{{ product.price }}</td>
+                <td>{{ product.category }}</td>
+                <td><a href="{{ url_for('delete', name=product.name) }}">Видалити</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+<form method="POST">
+    <input type="text" name="name" placeholder="Назва" required>
+    <input type="number" name="price" placeholder="Ціна" required>
+    <input type="text" name="category" placeholder="Категорія" required>
+    <button type="submit">Додати</button>
+</form>
+
+</body>
+</html>
